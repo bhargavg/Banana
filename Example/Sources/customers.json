@@ -1,0 +1,97 @@
+{
+  "status": 200,
+  "response": {
+    "customers": [
+      {
+        "name": {
+          "first_name": "Lex",
+          "last_name": "Luthor"
+        },
+        "age": 28,
+        "gender": "male",
+        "address": {
+          "street": "244 Clifton Place",
+          "city": "Edneyville",
+          "state": null
+        },
+        "skills": null
+      },
+      {
+        "name": {
+          "first_name": "Ada",
+          "last_name": "Stuart"
+        },
+        "age": 29,
+        "g": "female",
+        "address": {
+          "street": "754 Marconi Place",
+          "city": "Rosburg",
+          "state": "Louisiana"
+        },
+        "skills": [
+          "laborum",
+          "et",
+          "proident",
+          "dolor",
+          "exercitation",
+          "nisi"
+        ]
+      },
+      {
+        "name": {
+          "first_name": "Judith",
+          "last_name": "Roach"
+        },
+        "age": 24,
+        "gender": "female",
+        "address": {
+          "street": "675 Reed Street",
+          "city": "Cochranville",
+          "state": "Pennsylvania"
+        },
+        "skills": null
+      },
+      {
+        "name": {
+          "first_name": "Jana",
+          "last_name": "Decker"
+        },
+        "age": 21,
+        "gender": "female",
+        "address": {
+          "street": "524 Bridge Street",
+          "city": "Gila",
+          "state": "New Hampshire"
+        },
+        "skills": [
+          "sit",
+          "irure",
+          "duis",
+          "sit"
+        ]
+      },
+      {
+        "name": {
+          "first_name": "Lydia",
+          "last_name": "Maxwell"
+        },
+        "age": 31,
+        "gender": "female",
+        "address": {
+          "street": "596 Folsom Place",
+          "city": "Galesville",
+          "state": null
+        },
+        "skills": [
+          "sunt",
+          "et",
+          "et",
+          "ullamco",
+          "est",
+          "ipsum",
+          "laborum"
+        ]
+      }
+    ]
+  }
+}
