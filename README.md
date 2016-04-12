@@ -10,6 +10,11 @@ Simplicity and no-black-magic are the key design principles. The name Banana is 
 
 If you are interested in how this libary has evolved, please read [this blog post series](http://bhargavg.com/swift/2016/03/29/functional-json-parsing-in-swift.html)
 
+## Features
+- Error handling through `do-try-catch` mechanism
+- Handles Optionals
+- Supports Keypaths
+
 ## Installation
 
 Only `Carthage` is supported as of now. Adding `CocoaPods` support is in pipeline.
@@ -27,7 +32,40 @@ github "bhargavg/banana"
 and `carthage update`. For full list of command, please refer [Carthage documentation](https://github.com/Carthage/Carthage)
 
 
-## Usage
+## Examples
+
+Let's say you a `Foo` struct
+```swift
+struct Foo{
+    let x: String
+    let y: Int
+}
+```
+
+and the following JSON to parse:
+
+```json
+{
+    "x": "Hi",
+    "y": 5
+}
+```
+
+With Banana, just add a method that takes `JSON` (in this case, `init` method) and get the values using `get` method.
+
+```swift
+struct Foo {
+    let x: String
+    let y: Int
+
+    init(json: JSON) throws {
+        x = get(json, key: "x")
+        y = get(json, key: "y")
+    }
+}
+```
+
+## Documentation
 This library has a very tiny footprint of:
 - 4 methods
 - 2 Custom Operators
