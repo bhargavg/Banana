@@ -2,9 +2,9 @@
 
 Banana is a library that allows conversion of parsed JSON into typed objects.
 
-Why another JSON parser right? 
+Why another JSON mapper right? 
 
-The idea behind creating Banana is to show that JSON parsing is not as complicated as you might think.
+The idea behind creating Banana is to show that JSON mapping is not as complicated.
 
 Simplicity and no-black-magic are the key design principles. The name Banana is chosen to signify this. 
 
@@ -36,7 +36,7 @@ and `carthage update`. For full list of command, please refer [Carthage document
 
 Let's say you a `Foo` struct
 ```swift
-struct Foo{
+struct Foo {
     let x: String
     let y: Int
 }
