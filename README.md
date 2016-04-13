@@ -1,4 +1,5 @@
-# Banana 🍌 🐒
+# Banana 🍌 🐒 [![Build Status](https://travis-ci.org/bhargavg/Banana.svg?branch=master)](https://travis-ci.org/bhargavg/Banana) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 
 Banana is a library that allows conversion of parsed JSON into typed objects.
 
@@ -95,9 +96,6 @@ A transformation operator that applies the transformer function (rhs) on each va
 For detailed usage, please open `Banana.xcworkspace` in Xcode. It contains a sample project along with a Playground.
 
 ## Todo:
-- [ ] Test cases
-- [ ] Travis integration
-- [ ] Build status badge
 - [ ] CocoaPods Support
 - [ ] SwiftPM Support
 - [ ] OSX, Watch, TvOS Targets

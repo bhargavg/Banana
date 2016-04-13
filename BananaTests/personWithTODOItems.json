@@ -1,0 +1,30 @@
+{
+  "name": "Bob",
+  "age": 25,
+  "gender": "male",
+  "address": {
+    "home": {
+      "is_active": true,
+      "street": "17/B, Bank Road",
+      "pincode": "135335",
+      "city": "Metropolitan"
+    },
+    "office": {
+      "is_active": false,
+      "street": "255/C, Primrose Lane",
+      "city": "Gotham"
+    }
+  },
+  "todo_items": [
+    {
+      "id": "AX23",
+      "title": "Clean room",
+      "is_completed": false
+    },
+    {
+      "id": "AX24",
+      "title": "Wash clothes",
+      "is_completed": true
+    }
+  ]
+}

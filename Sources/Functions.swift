@@ -6,11 +6,7 @@ public func get<T>(box: JSON, key: String) throws -> T {
         throw ParseErrorType.NilValue(key)
     }
     
-    guard let typedValue = value as? T else {
-        throw ParseErrorType.InvalidType(key, expected: T.self)
-    }
-    
-    return typedValue
+    return try get(value)
 }
 
 public func get<T>(box: JSON, keys: [String]) throws -> T {
@@ -70,10 +66,6 @@ public func keyPath<T>(path: String) -> (box: JSON) throws -> T {
             throw ParseErrorType.NilValue(path)
         }
         
-        guard let typedValue = value as? T else {
-            throw ParseErrorType.InvalidType(path, expected: T.self)
-        }
-        
-        return typedValue
+        return try get(value)
     }
 }
