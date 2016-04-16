@@ -9,12 +9,13 @@ struct Customer {
     let address: Address
     let skills: [String]?
     
-    init(json: JSON) throws {
-        name    =  try  get(json, key: "name")    <~~ Customer.getFirstLastNames <~~ Customer.createName
-        age     =  try  get(json, key: "age")
-        gender  =  try  get(json, keys: ["gender", "g"])  <~~ Gender.parseGender
-        address =  try  get(json, key: "address") <~~ Address.init
-        skills  =  try? get(json, key: "skills")
+    /// Mapping from JSON to this model
+    static func fromJSON(json: JSON) throws -> Customer {
+        return Customer(name: try  get(json, key: "name") <~~ Customer.getFirstLastNames <~~ Customer.createName,
+                        age: try  get(json, key: "age"),
+                        gender: try get(json, keys: ["gender", "g"]) <~~ Gender.parseGender,
+                        address: try  get(json, key: "address") <~~ Address.fromJSON,
+                        skills: try? get(json, key: "skills"))
     }
     
     static func getFirstLastNames(json: [String: AnyObject]) throws -> (firstName: String, lastName: String) {
@@ -25,5 +26,17 @@ struct Customer {
     
     static func createName(firstName: String, withLastName lastName: String) -> (String) {
         return [firstName, lastName].joinWithSeparator(", ")
+    }
+    
+    
+    /// Mapping from this model to JSON
+    static func toJSON(customer: Customer) throws -> JSON {
+        var json = JSON()
+        json["name"] = customer.name
+        json["age"] = customer.age
+        json["gender"] = try customer.gender <~~ Gender.toJSON
+        json["address"] = try customer.address <~~ Address.toJSON
+        json["skills"] = customer.skills
+        return json
     }
 }

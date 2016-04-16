@@ -12,11 +12,11 @@ import Banana
 class PerfTests: XCTestCase {
     
     func testPerformanceExample() {
-        let json = Utils.loadJSON("personWithTODOItems")
+        let json: [String: AnyObject] = try! Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: PerfTests.self))
         
         self.measureBlock {
             for _ in 0...1_000 {
-                let _ = try! get(json) <~~ Person.init
+                let _ = try! json <~~ Person.parse
             }
         }
     }
@@ -29,12 +29,12 @@ class PerfTests: XCTestCase {
         let homePinCode: String?
         let todoItems: [TodoItem]
         
-        init(json: JSON) throws {
-            name = try get(json, key: "name")
-            age = try get(json, key: "age")
-            gender = try get(json, key: "gender") <~~ Gender.init
-            homePinCode = try? get(json, key: "address") <~~ keyPath("home.pincode")
-            todoItems = try get(json, key: "todo_items") <<~ TodoItem.init
+        static func parse(json: JSON) throws -> Person {
+            return Person(name: try get(json, key: "name"),
+                          age: try get(json, key: "age"),
+                          gender: try get(json, key: "gender") <~~ Gender.parse,
+                          homePinCode: try? get(json, key: "address")  <~~ keyPath("home.pincode"),
+                          todoItems: try get(json, key: "todo_items") <<~ TodoItem.parse)
         }
     }
     
@@ -43,24 +43,24 @@ class PerfTests: XCTestCase {
         let title: String
         let isCompleted: Bool
         
-        init(json: JSON) throws {
-            id = try get(json, key: "id")
-            title = try get(json, key: "title")
-            isCompleted = try get(json, key: "is_completed")
+        static func parse(json: JSON) throws -> TodoItem {
+            return TodoItem(id: try get(json, key: "id"),
+                            title: try get(json, key: "title"),
+                            isCompleted: try get(json, key: "is_completed"))
         }
     }
     
     enum Gender {
         case Male, Female
         
-        init(fromString: String) throws {
-            switch fromString {
+        static func parse(value: String) throws -> Gender {
+            switch value {
             case "male":
-                self = .Male
+                return .Male
             case "female":
-                self = .Female
+                return .Female
             default:
-                throw ParseError<String, String>.Custom("Invalid Gender: \(fromString)")
+                throw BananaError<String, String>.Custom("Invalid Gender: \(value)")
             }
         }
     }

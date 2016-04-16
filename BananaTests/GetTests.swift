@@ -45,21 +45,16 @@ class GetTests: XCTestCase {
     }
     
     func testKeyPath() {
-        let json = Utils.loadJSON("personWithTODOItems")
-        
         do {
-            let stringKey: String = try get(json) <~~ keyPath("address.home.street")
+            let rawJSON: [String: AnyObject] = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: GetTests.self))
+            
+            let stringKey: String = try rawJSON <~~ keyPath("address.home.street")
+            let boolKey: Bool = try rawJSON <~~ keyPath("address.office.is_active")
+            
             XCTAssertTrue(stringKey == "17/B, Bank Road")
-        } catch {
-            XCTFail("Failed with error: \(error)")
-        }
-        
-        do {
-            let boolKey: Bool = try get(json) <~~ keyPath("address.office.is_active")
             XCTAssertTrue(boolKey == false)
         } catch {
             XCTFail("Failed with error: \(error)")
         }
     }
-    
 }

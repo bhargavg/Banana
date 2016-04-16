@@ -10,12 +10,12 @@
 		7C2053DD1CBE792A00069051 /* PerfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2053DC1CBE792A00069051 /* PerfTests.swift */; };
 		7C76D4311CBE594A00363423 /* GetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76D4301CBE594A00363423 /* GetTests.swift */; };
 		7C76D4331CBE594A00363423 /* Banana.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC8CCA01CBC107200896C9C /* Banana.framework */; };
-		7C76D43C1CBE5A1A00363423 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76D43B1CBE5A1A00363423 /* TestUtils.swift */; };
 		7C76D43E1CBE692A00363423 /* PlainObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76D43D1CBE692A00363423 /* PlainObjectTests.swift */; };
 		7C76D4401CBE6F6C00363423 /* person.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C76D43F1CBE6F6C00363423 /* person.json */; };
 		7C76D4421CBE6FA100363423 /* personWithTODOItems.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C76D4411CBE6FA100363423 /* personWithTODOItems.json */; };
 		7C76D4441CBE700C00363423 /* NestedObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76D4431CBE700C00363423 /* NestedObjectTests.swift */; };
 		7CA20E9C1CBCFB8F0098EC8E /* Banana.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CA20E9B1CBCFB8F0098EC8E /* Banana.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CA2DF3B1CBFB3FA00E91622 /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA2DF3A1CBFB3FA00E91622 /* Banana.swift */; };
 		7CC8CCB91CBC176600896C9C /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8CCB61CBC176600896C9C /* Types.swift */; };
 		7CC8CCBA1CBC176600896C9C /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8CCB71CBC176600896C9C /* Operators.swift */; };
 		7CC8CCBB1CBC176600896C9C /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8CCB81CBC176600896C9C /* Functions.swift */; };
@@ -36,12 +36,12 @@
 		7C76D42E1CBE594A00363423 /* BananaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BananaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C76D4301CBE594A00363423 /* GetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTests.swift; sourceTree = "<group>"; };
 		7C76D4321CBE594A00363423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C76D43B1CBE5A1A00363423 /* TestUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		7C76D43D1CBE692A00363423 /* PlainObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlainObjectTests.swift; sourceTree = "<group>"; };
 		7C76D43F1CBE6F6C00363423 /* person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = person.json; sourceTree = "<group>"; };
 		7C76D4411CBE6FA100363423 /* personWithTODOItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = personWithTODOItems.json; sourceTree = "<group>"; };
 		7C76D4431CBE700C00363423 /* NestedObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedObjectTests.swift; sourceTree = "<group>"; };
 		7CA20E9B1CBCFB8F0098EC8E /* Banana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Banana.h; path = Support/Banana.h; sourceTree = SOURCE_ROOT; };
+		7CA2DF3A1CBFB3FA00E91622 /* Banana.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Banana.swift; path = Sources/Banana.swift; sourceTree = "<group>"; };
 		7CC8CCA01CBC107200896C9C /* Banana.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Banana.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC8CCA51CBC107200896C9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Support/Info.plist; sourceTree = "<group>"; };
 		7CC8CCB61CBC176600896C9C /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Types.swift; path = Sources/Types.swift; sourceTree = "<group>"; };
@@ -68,18 +68,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C2053DB1CBE791000069051 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				7C76D43B1CBE5A1A00363423 /* TestUtils.swift */,
-			);
-			name = Utils;
-			sourceTree = "<group>";
-		};
 		7C76D42F1CBE594A00363423 /* BananaTests */ = {
 			isa = PBXGroup;
 			children = (
-				7C2053DB1CBE791000069051 /* Utils */,
 				7C76D4301CBE594A00363423 /* GetTests.swift */,
 				7C76D43D1CBE692A00363423 /* PlainObjectTests.swift */,
 				7C76D4431CBE700C00363423 /* NestedObjectTests.swift */,
@@ -126,6 +117,7 @@
 				7CC8CCB61CBC176600896C9C /* Types.swift */,
 				7CC8CCB71CBC176600896C9C /* Operators.swift */,
 				7CC8CCB81CBC176600896C9C /* Functions.swift */,
+				7CA2DF3A1CBFB3FA00E91622 /* Banana.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -244,7 +236,6 @@
 				7C76D4311CBE594A00363423 /* GetTests.swift in Sources */,
 				7C76D4441CBE700C00363423 /* NestedObjectTests.swift in Sources */,
 				7C2053DD1CBE792A00069051 /* PerfTests.swift in Sources */,
-				7C76D43C1CBE5A1A00363423 /* TestUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA2DF3B1CBFB3FA00E91622 /* Banana.swift in Sources */,
 				7CC8CCB91CBC176600896C9C /* Types.swift in Sources */,
 				7CC8CCBA1CBC176600896C9C /* Operators.swift in Sources */,
 				7CC8CCBB1CBC176600896C9C /* Functions.swift in Sources */,
@@ -327,7 +319,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -370,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

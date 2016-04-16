@@ -35,65 +35,48 @@ and `carthage update`. For full list of command, please refer [Carthage document
 
 ## Examples
 
-Let's say you a `Foo` struct
+### Read a single value
 ```swift
-struct Foo {
-    let x: String
-    let y: Int
-}
+let value: String = try Banana.load(file: "simple") <~~ keyPath("path.to.key")
 ```
 
-and the following JSON to parse:
-
+### Mapping to models and back
 ```json
-{
-    "x": "Hi",
-    "y": 5
-}
+[
+    {
+        "x": "hi",
+        "y": 5
+    },
+    {
+        "x": "yolo",
+        "yo": 6
+    }
+]
 ```
-
-With Banana, just add a method that takes `JSON` (in this case, `init` method) and get the values using `get` method.
 
 ```swift
 struct Foo {
     let x: String
     let y: Int
 
-    init(json: JSON) throws {
-        x = get(json, key: "x")
-        y = get(json, key: "y")
+    static func fromJSON(json: JSON) throws -> Foo {
+        return Foo(
+                    x: try get(json, key: "x"),
+                    y: try get(json, keys: ["y", "yo"])
+                  )
+    }
+
+    static func toJSON(foo: Foo) -> JSON {
+        return ["x": foo.x, "y": foo.y]
     }
 }
+
+let foos: [Foo] = try Banana.load(file: "foos_file") <<~ Foo.fromJSON
+print(foos)
+
+let jsonString: String = try foos <<~ Foo.toJSON <~~ Banana.dump(options: [.PrettyPrinted]) <~~ Banana.toString(encoding: NSUTF8StringEncoding)
+print(jsonString)
 ```
-
-## Documentation
-This library has a very tiny footprint of:
-- 4 methods
-- 2 Custom Operators
-- 1 Type alias
-
-### `get(item: AnyObject)`
-All this method does is, try to cast the `item` to a type that caller expects. This will throw error if it couldn't cast.
-
-### `get(box:key:)`
-This method will try to retrive the value of `key` from the given dictionary and cast the value to what the caller expects. It can throw errors in two cases:
-- If there is no such key (throws `ParseError.NilValue` error)
-- If the value couldn't be casted (throws `ParseError.InvalidType` error)
-
-### `get(box:keys:)`
-This is similar to above method in functionality, except that now it accepts an array of keys instead of a single key.
-
-### `keyPath(path:)`
-This can be used to retrive value of given key path, like, `key1.key2.key3`
-
-### `<~~`
-A transformation operator that applies the transformer function (rhs) on the given value (lhs)
-
-### `<<~`
-A transformation operator that applies the transformer function (rhs) on each value of given array (rhs)
-
-
-For detailed usage, please open `Banana.xcworkspace` in Xcode. It contains a sample project along with a Playground.
 
 ## Todo:
 - [ ] CocoaPods Support

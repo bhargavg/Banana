@@ -12,10 +12,8 @@ import Banana
 class ParsingTests: XCTestCase {
     
     func testParsing() {
-        let json = Utils.loadJSON("person")
-        
-        do {
-            let person = try get(json) <~~ Person.init
+        do {            
+            let person = try Banana.load(file: "person", fileExtension: "json", bundle: NSBundle(forClass: GetTests.self)) <~~ Person.fromJSON
             
             XCTAssert(person.name == "Bob")
             XCTAssert(person.age == 25)
@@ -33,25 +31,25 @@ class ParsingTests: XCTestCase {
         let gender: Gender
         let address: String?
         
-        init(json: JSON) throws {
-            name = try get(json, key: "name")
-            age = try get(json, key: "age")
-            gender = try get(json, key: "gender") <~~ Gender.init
-            address = try? get(json, key: "address")
+        static func fromJSON(json: JSON) throws -> Person {
+            return Person(name: try get(json, key: "name"),
+                          age: try get(json, key: "age"),
+                          gender: try get(json, key: "gender") <~~ Gender.parse,
+                          address: try? get(json, key: "address"))
         }
     }
     
     enum Gender {
         case Male, Female
         
-        init(fromString: String) throws {
-            switch fromString {
+        static func parse(value: String) throws -> Gender {
+            switch value {
             case "male":
-                self = .Male
+                return .Male
             case "female":
-                self = .Female
+                return .Female
             default:
-                throw ParseError<String, String>.Custom("Invalid Gender: \(fromString)")
+                throw BananaError<String, String>.Custom("Invalid Gender: \(value)")
             }
         }
     }

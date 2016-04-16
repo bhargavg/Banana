@@ -1,13 +1,17 @@
-
+/// A type to represent typical JSON
 public typealias JSON = [String: AnyObject]
 
-public enum ParseError<T, U>: ErrorType {
+/// Enumeration to represent Banana Errors.
+public enum BananaError<T, U>: ErrorType {
+    /// Case when the value is of different type than expected
     case InvalidType(T, expected: U)
+    /// Case when a value is nil
     case NilValue(T)
+    /// Custom error case
     case Custom(T)
 }
 
-extension ParseError: CustomStringConvertible {
+extension BananaError: CustomStringConvertible {
     public var description: String {
         switch self {
         case .InvalidType(let aThing, let expectedType):

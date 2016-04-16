@@ -1,41 +1,31 @@
 import Banana
 
 /*:
- **Load JSON**
- 
- The `dictionary.json` file under resources is loaded for parsing
- */
-
-guard let path = NSBundle.mainBundle().pathForResource("dictionary", ofType: "json"),
-    let data = NSData(contentsOfFile: path),
-    let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []) else {
-        
-    print("Couldn't load JSON file")
-    exit(0)
-}
-
-/*:
- **Parse**
- 
- As json contains a dictionary, `<~~` operator is used for parsing
- */
-
-do {
-    let value: Foo = try get(json) <~~ Foo.init
-    print(value)
-} catch {
-    print("Couldn't parse JSON, error: \(error)")
-}
-
-/*:
  **Model**
  */
-
 struct Foo {
     let key: String
     
-    init(json: JSON) throws {
-        key = try get(json, key: "key")
+    static func fromJSON(json: JSON) throws -> Foo {
+        return Foo(key: try get(json, key: "key"))
+    }
+    
+    static func toJSON(foo: Foo) -> JSON {
+        return ["key": foo.key]
     }
 }
 
+/*:
+ **Map JSON to Model**
+ 
+ The `array.json` file under resources is loaded
+ */
+let foo = try Banana.load(file: "dictionary") <~~ Foo.fromJSON
+
+/*:
+ **Map Model to JSON string**
+ 
+ As json contains `Foo` as dictionary, `<~~` operator is used for mapping
+ */
+
+let fooAsJSONString = try foo <~~ Foo.toJSON <~~ Banana.dump(options: []) <~~ Banana.toString(encoding: NSUTF8StringEncoding)
