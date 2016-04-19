@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7CE5B6BF1CC69CDE009D355F"
-               BuildableName = "Banana-Mac.framework"
+               BuildableName = "Banana.framework"
                BlueprintName = "Banana-Mac"
                ReferencedContainer = "container:Banana.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7CE5B6BF1CC69CDE009D355F"
-            BuildableName = "Banana-Mac.framework"
+            BuildableName = "Banana.framework"
             BlueprintName = "Banana-Mac"
             ReferencedContainer = "container:Banana.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7CE5B6BF1CC69CDE009D355F"
-            BuildableName = "Banana-Mac.framework"
+            BuildableName = "Banana.framework"
             BlueprintName = "Banana-Mac"
             ReferencedContainer = "container:Banana.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7CE5B6BF1CC69CDE009D355F"
-            BuildableName = "Banana-Mac.framework"
+            BuildableName = "Banana.framework"
             BlueprintName = "Banana-Mac"
             ReferencedContainer = "container:Banana.xcodeproj">
          </BuildableReference>

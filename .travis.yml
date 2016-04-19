@@ -4,4 +4,5 @@ before_install:
   - brew update
   - brew uninstall xctool && brew install --HEAD xctool
 script:
-  - xctool test -project Banana.xcodeproj -scheme 'BananaTests' -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -project Banana.xcodeproj -scheme 'Banana-iOS' -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -project Banana.xcodeproj -scheme 'Banana-Mac' -sdk macosx ONLY_ACTIVE_ARCH=NO 
