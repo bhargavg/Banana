@@ -81,7 +81,7 @@ print(jsonString)
 ## Todo:
 - [ ] CocoaPods Support
 - [ ] SwiftPM Support
-- [ ] OSX, Watch, TvOS Targets
+- [ ] Watch, TvOS Targets
 
 ## Contribution
 Found a bug? Want a new feature? Please feel free to report any issue or raise a Pull Request.
