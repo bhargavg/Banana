@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7CC8CC9F1CBC107200896C9C"
-               BuildableName = "Banana.framework"
-               BlueprintName = "Banana"
+               BlueprintIdentifier = "7CE5B6BF1CC69CDE009D355F"
+               BuildableName = "Banana-Mac.framework"
+               BlueprintName = "Banana-Mac"
                ReferencedContainer = "container:Banana.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7CE5B6CB1CC69CF2009D355F"
+               BuildableName = "Banana-MacTests.xctest"
+               BlueprintName = "Banana-MacTests"
+               ReferencedContainer = "container:Banana.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7CE5B6BF1CC69CDE009D355F"
+            BuildableName = "Banana-Mac.framework"
+            BlueprintName = "Banana-Mac"
+            ReferencedContainer = "container:Banana.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7CC8CC9F1CBC107200896C9C"
-            BuildableName = "Banana.framework"
-            BlueprintName = "Banana"
+            BlueprintIdentifier = "7CE5B6BF1CC69CDE009D355F"
+            BuildableName = "Banana-Mac.framework"
+            BlueprintName = "Banana-Mac"
             ReferencedContainer = "container:Banana.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7CC8CC9F1CBC107200896C9C"
-            BuildableName = "Banana.framework"
-            BlueprintName = "Banana"
+            BlueprintIdentifier = "7CE5B6BF1CC69CDE009D355F"
+            BuildableName = "Banana-Mac.framework"
+            BlueprintName = "Banana-Mac"
             ReferencedContainer = "container:Banana.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
