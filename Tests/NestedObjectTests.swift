@@ -13,8 +13,12 @@ class NestedObjectTests: XCTestCase {
     
     func testParsing() {
         do {
-            
+
+#if swift(>=3.0)
+            let person = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(for: GetTests.self)) <~~ Person.fromJSON
+#else
             let person = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: GetTests.self)) <~~ Person.fromJSON
+#endif
             
             XCTAssert(person.name == "Bob")
             XCTAssert(person.age == 25)
@@ -34,6 +38,7 @@ class NestedObjectTests: XCTestCase {
         let todoItems: [TodoItem]
         
         static func fromJSON(json: JSON) throws -> Person {
+            
             return Person(name: try get(json, key: "name"),
                           age: try get(json, key: "age"),
                           gender: try get(json, key: "gender") <~~ Gender.parse,

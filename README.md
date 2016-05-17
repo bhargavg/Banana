@@ -32,7 +32,6 @@ github "bhargavg/banana"
 
 and `carthage update`. For full list of command, please refer [Carthage documentation](https://github.com/Carthage/Carthage)
 
-
 ## Examples
 
 ### Read a single value
@@ -79,8 +78,10 @@ print(jsonString)
 ```
 
 ## Todo:
+- [x] Carthage Support
 - [ ] CocoaPods Support
-- [ ] SwiftPM Support
+- [x] SwiftPM Support
+- [x] OS X, iOS Targets
 - [ ] Watch, TvOS Targets
 
 ## Contribution

@@ -12,9 +12,16 @@ import Banana
 class PerfTests: XCTestCase {
     
     func testPerformanceExample() {
+
+#if swift(>=3.0)
+        let json: [String: AnyObject] = try! Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(for: PerfTests.self))
+        let measureBlock = self.measure
+#else
         let json: [String: AnyObject] = try! Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: PerfTests.self))
+        let measureBlock = self.measureBlock
+#endif
         
-        self.measureBlock {
+        measureBlock {
             for _ in 0...1_000 {
                 let _ = try! json <~~ Person.parse
             }

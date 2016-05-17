@@ -46,7 +46,13 @@ class GetTests: XCTestCase {
     
     func testKeyPath() {
         do {
+
+#if swift(>=3.0)
+            let rawJSON: [String: AnyObject] = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(for: GetTests.self))
+#else
             let rawJSON: [String: AnyObject] = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: GetTests.self))
+#endif
+            
             
             let stringKey: String = try rawJSON <~~ keyPath("address.home.street")
             let boolKey: Bool = try rawJSON <~~ keyPath("address.office.is_active")
