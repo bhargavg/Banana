@@ -14,7 +14,7 @@ class PerfTests: XCTestCase {
     func testPerformanceExample() {
 
 #if swift(>=3.0)
-        let json: [String: AnyObject] = try! Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(for: PerfTests.self))
+        let json: [String: AnyObject] = try! Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: Bundle(for: PerfTests.self))
         let measureBlock = self.measure
 #else
         let json: [String: AnyObject] = try! Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: PerfTests.self))
@@ -40,7 +40,7 @@ class PerfTests: XCTestCase {
             return Person(name: try get(json, key: "name"),
                           age: try get(json, key: "age"),
                           gender: try get(json, key: "gender") <~~ Gender.parse,
-                          homePinCode: try? get(json, key: "address")  <~~ keyPath("home.pincode"),
+                          homePinCode: try? get(json, keyPath: "address.home.pincode"),
                           todoItems: try get(json, key: "todo_items") <<~ TodoItem.parse)
         }
     }

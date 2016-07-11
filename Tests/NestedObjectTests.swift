@@ -15,7 +15,7 @@ class NestedObjectTests: XCTestCase {
         do {
 
 #if swift(>=3.0)
-            let person = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(for: GetTests.self)) <~~ Person.fromJSON
+            let person = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: Bundle(for: GetTests.self)) <~~ Person.fromJSON
 #else
             let person = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: GetTests.self)) <~~ Person.fromJSON
 #endif
@@ -42,7 +42,7 @@ class NestedObjectTests: XCTestCase {
             return Person(name: try get(json, key: "name"),
                           age: try get(json, key: "age"),
                           gender: try get(json, key: "gender") <~~ Gender.parse,
-                          homePinCode: try? get(json, key: "address")  <~~ keyPath("home.pincode"),
+                          homePinCode: try? get(json, keyPath: "address.home.pincode"),
                           todoItems: try get(json, key: "todo_items") <<~ TodoItem.fromJSON)
         }
     }

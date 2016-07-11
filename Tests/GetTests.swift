@@ -48,14 +48,14 @@ class GetTests: XCTestCase {
         do {
 
 #if swift(>=3.0)
-            let rawJSON: [String: AnyObject] = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(for: GetTests.self))
+            let rawJSON: [String: AnyObject] = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: Bundle(for: GetTests.self))
 #else
             let rawJSON: [String: AnyObject] = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: GetTests.self))
 #endif
             
             
-            let stringKey: String = try rawJSON <~~ keyPath("address.home.street")
-            let boolKey: Bool = try rawJSON <~~ keyPath("address.office.is_active")
+            let stringKey: String = try get(rawJSON, keyPath: "address.home.street")
+            let boolKey: Bool = try get(rawJSON, keyPath: "address.office.is_active")
             
             XCTAssertTrue(stringKey == "17/B, Bank Road")
             XCTAssertTrue(boolKey == false)

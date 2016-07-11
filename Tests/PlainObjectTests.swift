@@ -15,7 +15,7 @@ class ParsingTests: XCTestCase {
         do {
             
 #if swift(>=3.0)
-            let person = try Banana.load(file: "person", fileExtension: "json", bundle: NSBundle(for: GetTests.self)) <~~ Person.fromJSON
+            let person = try Banana.load(file: "person", fileExtension: "json", bundle: Bundle(for: GetTests.self)) <~~ Person.fromJSON
 #else
             let person = try Banana.load(file: "person", fileExtension: "json", bundle: NSBundle(forClass: GetTests.self)) <~~ Person.fromJSON
 #endif

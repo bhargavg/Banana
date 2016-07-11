@@ -12,7 +12,6 @@ import Foundation
  */
 #if swift(>=3.0)
 public func get<T>(_ box: JSON, key: String) throws -> T {
-    
     typealias BananaErrorType = BananaError<String, T.Type>
     
     guard let value = box[key] else {
@@ -23,7 +22,6 @@ public func get<T>(_ box: JSON, key: String) throws -> T {
 }
 #else
 public func get<T>(box: JSON, key: String) throws -> T {
-    
     typealias BananaErrorType = BananaError<String, T.Type>
     
     guard let value = box[key] else {
@@ -31,6 +29,26 @@ public func get<T>(box: JSON, key: String) throws -> T {
     }
     
     return try get(value)
+}
+#endif
+
+/**
+ A function to get the value from given JSON ditionary and cast it to the type that 
+ receiver expects.
+ 
+ - parameter box: A JSON dictionary
+ - parameter keyPath: A key path whose value is required
+ - returns: the type casted value of `keyPath` from `box`
+ 
+ - throws:`BananaError` if the key is not found or the value cannot be casted.
+ */
+#if swift(>=3.0)
+public func get<T>(_ box: JSON, keyPath path: String) throws -> T {
+    return try get(box) <~~ keyPath(path)
+}
+#else
+public func get<T>(box: JSON, keyPath path: String) throws -> T {
+    return try get(box) <~~ keyPath(path)
 }
 #endif
 
@@ -52,7 +70,6 @@ public func get<T>(box: JSON, key: String) throws -> T {
 
 #if swift(>=3.0)
 public func get<T>(_ box: JSON, keys: [String]) throws -> T {
-    
     typealias BananaErrorType = BananaError<String, T.Type>
     
     guard !keys.isEmpty else {
@@ -92,7 +109,6 @@ public func get<T>(_ box: JSON, keys: [String]) throws -> T {
 }
 #else
 public func get<T>(box: JSON, keys: [String]) throws -> T {
-    
     typealias BananaErrorType = BananaError<String, T.Type>
     
     guard !keys.isEmpty else {
@@ -180,7 +196,6 @@ public func get<T>(item: AnyObject) throws -> T {
  */
 #if swift(>=3.0)
 public func keyPath<T>(_ path: String) -> (box: JSON) throws -> T {
-    
     typealias BananaErrorType = BananaError<String, T.Type>
     
     return { box in
@@ -192,7 +207,6 @@ public func keyPath<T>(_ path: String) -> (box: JSON) throws -> T {
 }
 #else
 public func keyPath<T>(path: String) -> (box: JSON) throws -> T {
-    
     typealias BananaErrorType = BananaError<String, T.Type>
     
     return { box in
