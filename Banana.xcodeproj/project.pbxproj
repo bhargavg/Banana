@@ -272,9 +272,11 @@
 				TargetAttributes = {
 					7C76D42D1CBE594A00363423 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					7CC8CC9F1CBC107200896C9C = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					7CE5B6BF1CC69CDE009D355F = {
 						CreatedOnToolsVersion = 7.3;
@@ -410,6 +412,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bhargavg.BananaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -420,6 +423,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bhargavg.BananaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -528,6 +532,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bhargavg.Banana;
 				PRODUCT_NAME = Banana;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -545,6 +550,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bhargavg.Banana;
 				PRODUCT_NAME = Banana;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
