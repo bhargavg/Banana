@@ -3,11 +3,11 @@
 
 Banana is a library that allows conversion of parsed JSON into typed objects.
 
-Why another JSON mapper right? 
+Why another JSON mapper right?
 
 The idea behind creating Banana is to show that JSON mapping is not as complicated.
 
-Simplicity and no-black-magic are the key design principles. The name Banana is chosen to signify this. 
+Simplicity and no-black-magic are the key design principles. The name Banana is chosen to signify this.
 
 If you are interested in how this libary has evolved, please read [this blog post series](http://bhargavg.com/swift/2016/03/29/functional-json-parsing-in-swift.html)
 
@@ -16,13 +16,16 @@ If you are interested in how this libary has evolved, please read [this blog pos
 - Handles Optionals
 - Supports Keypaths
 
+## Understanding Version Numbers
+`Banana` supports both legacy Swift 2.3 and latest Swift 3.0. To achieve this, the following release strategy is followed:
+
+* Odd number versions for `Swift 2.3` releases
+* Even number versions for `Swift 3` releases
+
 ## Installation
+Only `Carthage` is supported as of now.
 
-Only `Carthage` is supported as of now. Adding `CocoaPods` support is in pipeline.
-
-### [Carthage]
-
-[Carthage]: https://github.com/Carthage/Carthage
+### [Carthage](https://github.com/Carthage/Carthage)
 
 To add this library to your project, just add the following to your `Cartfile`
 
@@ -80,7 +83,7 @@ print(jsonString)
 ## Todo:
 - [x] Carthage Support
 - [ ] CocoaPods Support
-- [x] SwiftPM Support
+- [x] ~~SwiftPM Support~~ (Only supported with Swift-3 branch, ie., `master` branch)
 - [x] OS X, iOS Targets
 - [ ] Watch, TvOS Targets
 

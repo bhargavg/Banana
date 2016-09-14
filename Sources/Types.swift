@@ -2,7 +2,7 @@
 public typealias JSON = [String: AnyObject]
 
 /// Enumeration to represent Banana Errors.
-public enum BananaError<T, U>: ErrorProtocol {
+public enum BananaError<T, U>: ErrorType {
     /// Case when the value is of different type than expected
     case InvalidType(T, expected: U)
     /// Case when a value is nil

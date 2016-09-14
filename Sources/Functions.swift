@@ -10,17 +10,6 @@ import Foundation
  
  - throws: `BananaError` if the key is not found or the value cannot be casted.
  */
-#if swift(>=3.0)
-public func get<T>(_ box: JSON, key: String) throws -> T {
-    typealias BananaErrorType = BananaError<String, T.Type>
-    
-    guard let value = box[key] else {
-        throw BananaErrorType.NilValue(key)
-    }
-    
-    return try get(value)
-}
-#else
 public func get<T>(box: JSON, key: String) throws -> T {
     typealias BananaErrorType = BananaError<String, T.Type>
     
@@ -30,7 +19,6 @@ public func get<T>(box: JSON, key: String) throws -> T {
     
     return try get(value)
 }
-#endif
 
 /**
  A function to get the value from given JSON ditionary and cast it to the type that 
@@ -42,15 +30,9 @@ public func get<T>(box: JSON, key: String) throws -> T {
  
  - throws:`BananaError` if the key is not found or the value cannot be casted.
  */
-#if swift(>=3.0)
-public func get<T>(_ box: JSON, keyPath path: String) throws -> T {
-    return try get(box) <~~ keyPath(path)
-}
-#else
 public func get<T>(box: JSON, keyPath path: String) throws -> T {
     return try get(box) <~~ keyPath(path)
 }
-#endif
 
 /**
  A function to get the value from given JSON dictonary and cast it to the type that
@@ -67,47 +49,6 @@ public func get<T>(box: JSON, keyPath path: String) throws -> T {
  - throws: `BananaError` if non keys are provided, or, the JSON doesn't have any of the
  keys, or, values could'nt be casted
  */
-
-#if swift(>=3.0)
-public func get<T>(_ box: JSON, keys: [String]) throws -> T {
-    typealias BananaErrorType = BananaError<String, T.Type>
-    
-    guard !keys.isEmpty else {
-        throw BananaErrorType.Custom("Should provide at least one key")
-    }
-    
-    var errors:[BananaErrorType] = []
-    
-    for key in keys {
-        do {
-            let value: T = try get(box, key: key)
-            return value
-        } catch {
-            if let err = error as? BananaErrorType {
-                errors.append(err)
-            } else {
-                errors.append(.Custom("Unknown error occured while processing keys: \(keys)"))
-            }
-        }
-    }
-    
-    guard let lastError = errors.last else {
-        throw BananaErrorType.Custom("Unknown error occured while processing keys: \(keys)")
-    }
-    
-    for error in errors {
-        if case .NilValue = error {
-            continue;
-        } else {
-            throw lastError
-        }
-    }
-    
-    let joinedKeys = keys.map{ "\"" + $0 + "\"" }.joined(separator: ", ")
-
-    throw BananaErrorType.Custom("No values found for keys: \(joinedKeys) \nin: \n\(box)")
-}
-#else
 public func get<T>(box: JSON, keys: [String]) throws -> T {
     typealias BananaErrorType = BananaError<String, T.Type>
     
@@ -146,7 +87,6 @@ public func get<T>(box: JSON, keys: [String]) throws -> T {
 
     throw BananaErrorType.Custom("No values found for keys: \(joinedKeys) \nin: \n\(box)")
 }
-#endif
 
 /**
  Cast the given input into required type.
@@ -158,15 +98,6 @@ public func get<T>(box: JSON, keys: [String]) throws -> T {
  
  - throws: Throws `BananaError` if the value cannot be casted.
  */
-#if swift(>=3.0)
-public func get<T>(_ item: AnyObject) throws -> T {
-    guard let typedItem = item as? T else {
-        throw BananaError.InvalidType(item, expected: T.self)
-    }
-    
-    return typedItem
-}
-#else
 public func get<T>(item: AnyObject) throws -> T {
     guard let typedItem = item as? T else {
         throw BananaError.InvalidType(item, expected: T.self)
@@ -174,7 +105,6 @@ public func get<T>(item: AnyObject) throws -> T {
     
     return typedItem
 }
-#endif
 
 /**
  Get the value of a keypath from given dictonary.
@@ -194,18 +124,6 @@ public func get<T>(item: AnyObject) throws -> T {
  - throws: `BananaError` if the dictionary doesn't have a key path or 
  the value cannot be casted.
  */
-#if swift(>=3.0)
-public func keyPath<T>(_ path: String) -> (box: JSON) throws -> T {
-    typealias BananaErrorType = BananaError<String, T.Type>
-    
-    return { box in
-        guard let value = (box as NSDictionary).value(forKeyPath: path) else {
-            throw BananaErrorType.NilValue(path)
-        }
-        return try get(value)
-    }
-}
-#else
 public func keyPath<T>(path: String) -> (box: JSON) throws -> T {
     typealias BananaErrorType = BananaError<String, T.Type>
     
@@ -216,4 +134,3 @@ public func keyPath<T>(path: String) -> (box: JSON) throws -> T {
         return try get(value)
     }
 }
-#endif
