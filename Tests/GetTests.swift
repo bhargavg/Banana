@@ -12,7 +12,7 @@ import Banana
 class GetTests: XCTestCase {
     
     func testGetInt() {
-        let anyInt: AnyObject = 5
+        let anyInt = 5
 
         do {
             let value: Int = try get(anyInt)
@@ -23,7 +23,7 @@ class GetTests: XCTestCase {
     }
     
     func testGetString() {
-        let anyString: AnyObject = "My String"
+        let anyString = "My String"
         
         do {
             let value: String = try get(anyString)
@@ -34,7 +34,7 @@ class GetTests: XCTestCase {
     }
     
     func testGetBool() {
-        let anyBool: AnyObject = true
+        let anyBool = true
 
         do {
             let value: Bool = try get(anyBool)
@@ -47,12 +47,7 @@ class GetTests: XCTestCase {
     func testKeyPath() {
         do {
 
-#if swift(>=3.0)
-            let rawJSON: [String: AnyObject] = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: Bundle(for: GetTests.self))
-#else
-            let rawJSON: [String: AnyObject] = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: GetTests.self))
-#endif
-            
+            let rawJSON: JSON = try Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: Bundle(for: GetTests.self))
             
             let stringKey: String = try get(rawJSON, keyPath: "address.home.street")
             let boolKey: Bool = try get(rawJSON, keyPath: "address.office.is_active")

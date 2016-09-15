@@ -10,8 +10,6 @@
 		7C76D4331CBE594A00363423 /* Banana.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC8CCA01CBC107200896C9C /* Banana.framework */; };
 		7CA20E9C1CBCFB8F0098EC8E /* Banana.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CA20E9B1CBCFB8F0098EC8E /* Banana.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CA2DF3B1CBFB3FA00E91622 /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA2DF3A1CBFB3FA00E91622 /* Banana.swift */; };
-		7CC16FCD1CE9D7FE00AFA40A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC16FCC1CE9D7FE00AFA40A /* Utils.swift */; };
-		7CC16FCE1CE9D7FE00AFA40A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC16FCC1CE9D7FE00AFA40A /* Utils.swift */; };
 		7CC8CCB91CBC176600896C9C /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8CCB61CBC176600896C9C /* Types.swift */; };
 		7CC8CCBA1CBC176600896C9C /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8CCB71CBC176600896C9C /* Operators.swift */; };
 		7CC8CCBB1CBC176600896C9C /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8CCB81CBC176600896C9C /* Functions.swift */; };
@@ -57,7 +55,6 @@
 		7C76D42E1CBE594A00363423 /* Banana-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Banana-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA20E9B1CBCFB8F0098EC8E /* Banana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Banana.h; path = Support/Banana.h; sourceTree = SOURCE_ROOT; };
 		7CA2DF3A1CBFB3FA00E91622 /* Banana.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Banana.swift; path = Sources/Banana.swift; sourceTree = "<group>"; };
-		7CC16FCC1CE9D7FE00AFA40A /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/Utils.swift; sourceTree = "<group>"; };
 		7CC8CCA01CBC107200896C9C /* Banana.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Banana.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC8CCA51CBC107200896C9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Support/Info.plist; sourceTree = "<group>"; };
 		7CC8CCB61CBC176600896C9C /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Types.swift; path = Sources/Types.swift; sourceTree = "<group>"; };
@@ -161,7 +158,6 @@
 				7CC8CCB71CBC176600896C9C /* Operators.swift */,
 				7CC8CCB81CBC176600896C9C /* Functions.swift */,
 				7CA2DF3A1CBFB3FA00E91622 /* Banana.swift */,
-				7CC16FCC1CE9D7FE00AFA40A /* Utils.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -267,7 +263,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Bhargav Gurlanka";
 				TargetAttributes = {
 					7C76D42D1CBE594A00363423 = {
@@ -358,7 +354,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CC16FCD1CE9D7FE00AFA40A /* Utils.swift in Sources */,
 				7CA2DF3B1CBFB3FA00E91622 /* Banana.swift in Sources */,
 				7CC8CCB91CBC176600896C9C /* Types.swift in Sources */,
 				7CC8CCBA1CBC176600896C9C /* Operators.swift in Sources */,
@@ -370,7 +365,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CC16FCE1CE9D7FE00AFA40A /* Utils.swift in Sources */,
 				7CE5B6D71CC69DBD009D355F /* Types.swift in Sources */,
 				7CE5B6D81CC69DBD009D355F /* Operators.swift in Sources */,
 				7CE5B6D91CC69DBD009D355F /* Functions.swift in Sources */,
@@ -412,7 +406,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bhargavg.BananaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -423,7 +416,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bhargavg.BananaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -441,8 +433,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -470,6 +464,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -490,8 +485,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -511,6 +508,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -521,6 +520,7 @@
 		7CC8CCA91CBC107200896C9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -532,13 +532,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bhargavg.Banana;
 				PRODUCT_NAME = Banana;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		7CC8CCAA1CBC107200896C9C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -550,14 +550,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bhargavg.Banana;
 				PRODUCT_NAME = Banana;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
 		7CE5B6C61CC69CDE009D355F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -578,7 +577,7 @@
 		7CE5B6C71CC69CDE009D355F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

@@ -33,4 +33,4 @@ let foo: Foo =  try Banana.load(file: "simple") <~~ keyPath("root") <~~ Foo.from
  
  `Banana.dump` is used in combination with `Banana.toString` to convert our model to a JSON string
  */
-let jsonAsString = try foo <~~ Foo.toJSON <~~ Banana.dump(options: [.PrettyPrinted]) <~~ Banana.toString(encoding: NSUTF8StringEncoding)
+let jsonAsString = try foo <~~ Foo.toJSON <~~ Banana.dump(options: [.prettyPrinted]) <~~ Banana.toString(encoding: .utf8)

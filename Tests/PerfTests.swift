@@ -13,14 +13,9 @@ class PerfTests: XCTestCase {
     
     func testPerformanceExample() {
 
-#if swift(>=3.0)
-        let json: [String: AnyObject] = try! Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: Bundle(for: PerfTests.self))
+        let json: JSON = try! Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: Bundle(for: PerfTests.self))
         let measureBlock = self.measure
-#else
-        let json: [String: AnyObject] = try! Banana.load(file: "personWithTODOItems", fileExtension: "json", bundle: NSBundle(forClass: PerfTests.self))
-        let measureBlock = self.measureBlock
-#endif
-        
+    
         measureBlock {
             for _ in 0...1_000 {
                 let _ = try! json <~~ Person.parse
@@ -58,16 +53,16 @@ class PerfTests: XCTestCase {
     }
     
     enum Gender {
-        case Male, Female
+        case male, female
         
         static func parse(value: String) throws -> Gender {
             switch value {
             case "male":
-                return .Male
+                return .male
             case "female":
-                return .Female
+                return .female
             default:
-                throw BananaError<String, String>.Custom("Invalid Gender: \(value)")
+                throw BananaError<String, String>.custom("Invalid Gender: \(value)")
             }
         }
     }

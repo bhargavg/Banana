@@ -18,14 +18,14 @@ struct Customer {
                         skills: try? get(json, key: "skills"))
     }
     
-    static func getFirstLastNames(json: [String: AnyObject]) throws -> (firstName: String, lastName: String) {
+    static func getFirstLastNames(json: [String: Any]) throws -> (firstName: String, lastName: String) {
         let firstName: String = try get(json, key: "first_name")
         let lastName: String  = try get(json, key: "last_name")
         return (firstName, lastName)
     }
     
     static func createName(firstName: String, withLastName lastName: String) -> (String) {
-        return [firstName, lastName].joinWithSeparator(", ")
+        return [firstName, lastName].joined(separator: ", ")
     }
     
     

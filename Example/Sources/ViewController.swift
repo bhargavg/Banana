@@ -13,7 +13,7 @@ class ViewController: UIViewController {
             print(customers)
             
             /// Mapping from models to JSON
-            let jsonAsString = try customers <<~ Customer.toJSON <~~ Banana.dump(options: [.PrettyPrinted]) <~~ Banana.toString(encoding: NSUTF8StringEncoding)
+            let jsonAsString = try customers <<~ Customer.toJSON <~~ Banana.dump(options: [.prettyPrinted]) <~~ Banana.toString(encoding: .utf8)
             print(jsonAsString)
             
         } catch {

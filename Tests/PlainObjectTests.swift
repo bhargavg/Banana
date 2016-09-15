@@ -13,16 +13,11 @@ class ParsingTests: XCTestCase {
     
     func testParsing() {
         do {
-            
-#if swift(>=3.0)
             let person = try Banana.load(file: "person", fileExtension: "json", bundle: Bundle(for: GetTests.self)) <~~ Person.fromJSON
-#else
-            let person = try Banana.load(file: "person", fileExtension: "json", bundle: NSBundle(forClass: GetTests.self)) <~~ Person.fromJSON
-#endif
             
             XCTAssert(person.name == "Bob")
             XCTAssert(person.age == 25)
-            XCTAssert(person.gender == .Male)
+            XCTAssert(person.gender == .male)
             XCTAssert(person.address == nil)
             
         } catch {
@@ -45,16 +40,16 @@ class ParsingTests: XCTestCase {
     }
     
     enum Gender {
-        case Male, Female
+        case male, female
         
         static func parse(value: String) throws -> Gender {
             switch value {
             case "male":
-                return .Male
+                return .male
             case "female":
-                return .Female
+                return .female
             default:
-                throw BananaError<String, String>.Custom("Invalid Gender: \(value)")
+                throw BananaError<String, String>.custom("Invalid Gender: \(value)")
             }
         }
     }

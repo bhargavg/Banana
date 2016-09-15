@@ -1,12 +1,11 @@
-infix operator <~~ {
-    associativity left
-    precedence 110
+precedencegroup BananaOperator {
+    associativity: left
+    higherThan: AssignmentPrecedence
 }
 
-infix operator <<~ {
-    associativity left
-    precedence 110
-}
+infix operator <~~ : BananaOperator
+infix operator <<~ : BananaOperator
+
 
 /**
  Custom operator that takes a vaule x, a function f and returns f(x)

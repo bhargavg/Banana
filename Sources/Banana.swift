@@ -15,25 +15,15 @@ public struct Banana {
      - returns: An object of type T. This T is determined by the receiver. It tries to cast the AnyObject from `JSONObjectWithData` to a type that receiver expects.
      - throws: Throws `BananaError` if file couldn't be loaded or the value cannot be casted
      */
-#if swift(>=3.0)
     public static func load<T>(file: String, fileExtension: String = "json", bundle: Bundle = Bundle.main, options: JSONSerialization.ReadingOptions = []) throws -> T {
-        guard let path = bundle.pathForResource(file, ofType: fileExtension),
-              let data = NSData(contentsOfFile: path) else {
-            throw BananaError<String, String>.Custom("Couldn't load JSON file: \(file)")
+        guard let path = bundle.path(forResource: file, ofType: fileExtension) else {
+            throw BananaError<String, String>.custom("Couldn't load JSON file: \(file)")
         }
+        
+        let data = try Data(contentsOf: URL(fileURLWithPath: path))
         
         return try load(data: data, options: options)
     }
-#else
-    public static func load<T>(file file: String, fileExtension: String = "json", bundle: NSBundle = NSBundle.mainBundle(), options: NSJSONReadingOptions = []) throws -> T {
-        guard let path = bundle.pathForResource(file, ofType: fileExtension),
-              let data = NSData(contentsOfFile: path) else {
-            throw BananaError<String, String>.Custom("Couldn't load JSON file: \(file)")
-        }
-    
-        return try load(data: data, options: options)
-    }
-#endif
     
     /**
      Parse the given data into a JSON object.
@@ -47,15 +37,9 @@ public struct Banana {
      - returns: An object of type T. This T is determined by the receiver. It tries to cast the AnyObject from `JSONObjectWithData` to a type that receiver expects.
      - throws: Throws `BananaError` if JSON couldn't be parsed, or, the value cannot be casted
      */
-#if swift(>=3.0)
-    public static func load<T>(data: NSData, options: JSONSerialization.ReadingOptions = []) throws -> T {
-        return try JSONSerialization.jsonObject(with: data as Data, options: options) <~~ get
+    public static func load<T>(data: Data, options: JSONSerialization.ReadingOptions = []) throws -> T {
+        return try JSONSerialization.jsonObject(with: data, options: options) <~~ get
     }
-#else
-    public static func load<T>(data data: NSData, options: NSJSONReadingOptions = []) throws -> T {
-        return try NSJSONSerialization.JSONObjectWithData(data, options: options) <~~ get
-    }
-#endif
     
     /**
      Encode the given `jsonObject` into NSData
@@ -72,20 +56,11 @@ public struct Banana {
      
      - throws: `BananaError` if the value cannot be encoded
     */
-#if swift(>=3.0)
-    public static func dump(options: JSONSerialization.WritingOptions) -> (jsonObject: AnyObject) throws -> NSData {
+    public static func dump(options: JSONSerialization.WritingOptions) -> (_ jsonObject: Any) throws -> Data {
         return  { jsonObject in
             return try Banana.dump(JSONObject: jsonObject, options: options)
         }
     }
-#else
-    public static func dump(options options: NSJSONWritingOptions) -> (jsonObject: AnyObject) throws -> NSData {
-        return  { jsonObject in
-            return try Banana.dump(JSONObject: jsonObject, options: options)
-        }
-    }
-#endif
-    
     
     /**
      Encode the given `jsonObject` into NSData
@@ -99,23 +74,13 @@ public struct Banana {
      
      - throws: `BananaError` if the value cannot be encoded
      */
-#if swift(>=3.0)
-    public static func dump(JSONObject jsonObject: AnyObject, options: JSONSerialization.WritingOptions) throws -> NSData {
+    public static func dump(JSONObject jsonObject: Any, options: JSONSerialization.WritingOptions) throws -> Data {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: options) else {
-            throw BananaError<String, String>.Custom("Couldn't convert JSON Object to NSData")
+            throw BananaError<String, String>.custom("Couldn't convert JSON Object to NSData")
         }
         
         return jsonData
     }
-#else
-    public static func dump(JSONObject jsonObject: AnyObject, options: NSJSONWritingOptions) throws -> NSData {
-        guard let jsonData = try? NSJSONSerialization.dataWithJSONObject(jsonObject, options: options) else {
-            throw BananaError<String, String>.Custom("Couldn't convert JSON Object to NSData")
-        }
-    
-        return jsonData
-    }
-#endif
     
     
     /**
@@ -133,25 +98,13 @@ public struct Banana {
      
      - throws: `BananaError` if `NSString` object cannot be made
      */
-#if swift(>=3.0)
-    public static func toString(encoding: String.Encoding) -> (data: NSData) throws -> NSString {
+    public static func toString(encoding: String.Encoding) -> (_ data: Data) throws -> String {
         return { data in
-            guard let string = NSString(data: data as Data, encoding:  encoding.rawValue) else {
-                throw BananaError<String, String>.Custom("Couldn't convert to NSString")
+            guard let string = String(data: data, encoding: encoding) else {
+                throw BananaError<String, String>.custom("Couldn't convert to NSString")
             }
             
             return string
         }
     }
-#else
-    public static func toString(encoding encoding: NSStringEncoding) -> (data: NSData) throws -> NSString {
-        return { data in
-            guard let string = NSString(data: data, encoding:  encoding) else {
-                throw BananaError<String, String>.Custom("Couldn't convert to NSString")
-            }
-    
-            return string
-        }
-    }
-#endif
 }

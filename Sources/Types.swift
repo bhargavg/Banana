@@ -1,24 +1,24 @@
 /// A type to represent typical JSON
-public typealias JSON = [String: AnyObject]
+public typealias JSON = [String: Any]
 
 /// Enumeration to represent Banana Errors.
-public enum BananaError<T, U>: ErrorProtocol {
+public enum BananaError<T, U>: Error {
     /// Case when the value is of different type than expected
-    case InvalidType(T, expected: U)
+    case invalidType(T, expected: U)
     /// Case when a value is nil
-    case NilValue(T)
+    case nilValue(T)
     /// Custom error case
-    case Custom(T)
+    case custom(T)
 }
 
 extension BananaError: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .InvalidType(let aThing, let expectedType):
+        case .invalidType(let aThing, let expectedType):
             return "\(aThing) is not of type: \(expectedType)"
-        case .NilValue(let key):
+        case .nilValue(let key):
             return "\(key) is nil"
-        case .Custom(let thingy):
+        case .custom(let thingy):
             return "\(thingy)"
         }
     }
