@@ -1,4 +1,4 @@
-# Banana 🍌 🐒 [![Build Status](https://travis-ci.org/bhargavg/Banana.svg?branch=master)](https://travis-ci.org/bhargavg/Banana) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+# Banana 🍌 🐒 [![Build Status](https://travis-ci.org/bhargavg/Banana.svg?branch=swift-2.3)](https://travis-ci.org/bhargavg/Banana) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 
 Banana is a library that allows conversion of parsed JSON into typed objects.
@@ -34,6 +34,8 @@ github "bhargavg/banana"
 ```
 
 and `carthage update`. For full list of command, please refer [Carthage documentation](https://github.com/Carthage/Carthage)
+
+> Note: Make sure you use odd version number releases if you want Swift 2.3 compatibility
 
 ## Examples
 
