@@ -1,4 +1,6 @@
-# Banana 🍌 🐒 [![Build Status](https://travis-ci.org/bhargavg/Banana.svg?branch=master)](https://travis-ci.org/bhargavg/Banana) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+# [Deprecated] Banana 🍌 🐒 [![Build Status](https://travis-ci.org/bhargavg/Banana.svg?branch=master)](https://travis-ci.org/bhargavg/Banana) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
+> This library is deprecated in favor of Swift 4's `Decodable` protocol
 
 
 Banana is a library that allows conversion of parsed JSON into typed objects.
